@@ -1,0 +1,21 @@
+---
+#
+#  Manifest.yml for a basic hello world index.html file
+#  This application and steps to deploy are described in full in the getting started guide on predix.io
+#
+#  Step 1 is to change your application name, save, exit, and cf push
+#  Step 2 - In later tutorials you will be shown how to **bind** to Predix services as described on predix.io
+
+applications:
+  - name: teamA-Predix-unternehmer-WebApp # Step 1: Change your application name
+    buildpack: nodejs_buildpack
+    memory: 256M
+    command:  npm start
+    disk_quota: 256M
+env:
+    node_env: cloud
+    uaa_service_label : predix-uaa
+    clientId: 'timeseries_client_readonly'
+    zoneId: '067e39c4-de83-40e2-b966-2f83ea5fc292'
+    uaaUrl: 'https://6a1e5ff3-ab32-45b4-bf67-4548a9c2efdb.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token'
+    timeseriesURL: 'https://time-series-store-predix.run.aws-usw02-pr.ice.predix.io/v1/datapoints'
